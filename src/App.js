@@ -1,14 +1,16 @@
 import React from "react";
-import { AuthContext } from "./providers/auth";
+import { Login } from "./components/Login";
+import { Profile } from "./components/profile";
+import { useAuth } from "./providers/auth";
 
 function App() {
-  const {user, setUser} = React.useContext(AuthContext);
+  const { user } = useAuth();
   console.log(user);
 
   return (
     <div>
-      <h1 style={{color: user.color}}>Olá Mundo!</h1>
-      <input type='text' onChange={(event => setUser({name: event.target.value}))}/>
+      <Profile />
+      <Login />
     </div>
   );
 }
